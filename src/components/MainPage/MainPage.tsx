@@ -1,5 +1,11 @@
+import ListFilms from '../ListFilms/ListFilms';
+
 const MainPage = () => {
-  return <div></div>;
+  return (
+    <div>
+      <ListFilms />
+    </div>
+  );
 };
 
 export default MainPage;

@@ -18,7 +18,7 @@ const App = () => {
       <BrowserRouter>
         <Layout>
           <Box sx={style.box}>
-            <Container>
+            <Container maxWidth={false}>
               <Routes>
                 <Route path="/welcome" element={<WelcomPage />} />
                 <Route path="/" element={<MainPage />} />
