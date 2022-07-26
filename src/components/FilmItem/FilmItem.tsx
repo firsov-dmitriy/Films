@@ -12,13 +12,12 @@ const FilmItem: FC<FilmItemProps> = ({ film }) => {
   return (
     <StyledCard
       id={film.id.toString()}
-      sx={{ maxWidth: 345 }}
       onMouseMove={() => setIsShow(true)}
       onMouseLeave={() => setIsShow(false)}
     >
       <StyledCardMedia
         component="img"
-        height="220"
+        height={300}
         sx={{ opacity: isShow ? 0.3 : 1 }}
         image={film.large_cover_image}
         alt={film.title}

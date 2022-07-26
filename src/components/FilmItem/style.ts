@@ -7,7 +7,7 @@ interface CardMediaProp {
 
 export const StyledCard = styled(Card)({
   position: 'relative',
-  margin: 24,
+  margin: 3,
   ':hover': {
     cursor: 'pointer',
   },
