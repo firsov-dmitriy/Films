@@ -13,7 +13,7 @@ export interface IFilm {
   id: number;
   background_image: string;
   background_image_original: string;
-  description: string;
+  description_full: string;
   language: string;
   large_cover_image: string;
   title: string;
@@ -25,7 +25,8 @@ export interface FilmResponse {
   status_message: string;
 }
 export interface FilmQuery {
-  page: number;
-  minimum_rating: number;
-  genre: string;
+  page?: number;
+  minimum_rating?: number;
+  genre?: string;
+  limit?: number;
 }
