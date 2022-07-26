@@ -28,4 +28,5 @@ export interface FilmQuery {
   page?: number;
   minimum_rating?: number;
   genre?: string;
+  limit?: number;
 }
