@@ -12,8 +12,10 @@ interface FilmData {
 export interface IFilm {
   id: number;
   background_image: string;
+  background_image_original: string;
   description: string;
   language: string;
+  large_cover_image: string;
   title: string;
   torrents: FilmTorrent[];
 }
@@ -24,4 +26,6 @@ export interface FilmResponse {
 }
 export interface FilmQuery {
   page: number;
+  minimum_rating: number;
+  genre: string;
 }
