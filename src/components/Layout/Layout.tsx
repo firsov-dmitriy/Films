@@ -1,5 +1,5 @@
-import React, { FC } from "react";
-import Header from "../Header/Header";
+import React, { FC } from 'react';
+import Header from '../Header/Header';
 
 interface LayoutProps {
   children: React.ReactElement | React.ReactElement[];

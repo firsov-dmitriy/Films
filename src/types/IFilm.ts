@@ -2,6 +2,7 @@ interface FilmTorrent {
   url: string;
   data_uploaded: string;
   quality: string;
+  hash: string;
 }
 interface FilmData {
   limit: string;

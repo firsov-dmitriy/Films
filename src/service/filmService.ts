@@ -1,4 +1,4 @@
-import { BASE_URL } from './../utils/contsct';
+import { BASE_URL, endpointsFilm } from './../utils/contsct';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { FilmQuery, FilmResponse } from '../types/IFilm';
 
@@ -9,10 +9,15 @@ export const filmApi = createApi({
   endpoints: (builder) => ({
     getListFilm: builder.query<FilmResponse, FilmQuery>({
       query: ({ page }) => ({
-        url: 'list_movies.json',
+        url: endpointsFilm.List,
         params: { page },
       }),
       providesTags: ['Films'],
+    }),
+    getOneFilm: builder.query({
+      query: (movieId: string) => ({
+        url: endpointsFilm.OneFilm + movieId,
+      }),
     }),
   }),
 });
