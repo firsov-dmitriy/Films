@@ -1,4 +1,4 @@
-import { BASE_URL, endpointsFilm } from './../utils/contsct';
+import { BASE_URL, endpointsFilm } from '../utils/contsct';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { FilmQuery, FilmResponse } from '../types/IFilm';
 
