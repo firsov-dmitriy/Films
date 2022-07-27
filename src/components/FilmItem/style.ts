@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 export const StyledCard = styled(Card)({
   position: 'relative',
-  margin: '10px 5px',
+  margin: '10px 2px',
   boxShadow: '5px -3px 15px 5px rgba(0,0,0,0.2)',
   ':hover': {
     cursor: 'pointer',

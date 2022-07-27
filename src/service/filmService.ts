@@ -14,12 +14,13 @@ export const filmApi = createApi({
       }),
       providesTags: ['Films'],
     }),
-    getOneFilm: builder.query({
-      query: (movieId: string) => ({
-        url: endpointsFilm.OneFilm + movieId,
+    getOneFilm: builder.query<FilmResponse, { movieId: number }>({
+      query: ({ movieId = 1 }) => ({
+        url: endpointsFilm.OneFilm,
+        params: { movie_id: movieId },
       }),
     }),
   }),
 });
 
-export const { useGetListFilmQuery } = filmApi;
+export const { useGetListFilmQuery, useGetOneFilmQuery } = filmApi;

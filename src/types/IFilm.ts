@@ -6,6 +6,7 @@ interface FilmTorrent {
 }
 interface FilmData {
   limit: string;
+  movie_count: string;
   movies: IFilm[];
   page_number: number;
 }
@@ -22,6 +23,7 @@ export interface IFilm {
 export interface FilmResponse {
   data: FilmData;
   status: string;
+
   status_message: string;
 }
 export interface FilmQuery {

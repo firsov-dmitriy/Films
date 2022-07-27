@@ -1,4 +1,4 @@
-import { Skeleton } from '@mui/material';
+import { Grid, Skeleton } from '@mui/material';
 import styled from '@emotion/styled';
 
 export const StyledSkeleton = styled(Skeleton)({
@@ -6,4 +6,9 @@ export const StyledSkeleton = styled(Skeleton)({
   borderRadius: '4px',
   height: 300,
   width: 200,
+});
+
+export const StyledGrid = styled(Grid)({
+  display: 'flex',
+  justifyContent: 'space-around',
 });
