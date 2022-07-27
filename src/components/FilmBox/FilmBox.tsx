@@ -31,7 +31,7 @@ const FilmBox = () => {
         </IconButton>
       </Grid>
       {isShow && <Filter />}
-      <ListFilms limit={50} genre={'animation'} />
+      <ListFilms limit={50} genre={'drama sci-fi'} />
     </Paper>
   );
 };
