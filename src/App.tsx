@@ -1,6 +1,7 @@
 import { Box, Container, CssBaseline } from '@mui/material';
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import Layout from './components/Layout/Layout';
 import MainPage from './components/MainPage/MainPage';
 import WelcomPage from './components/WelcomePage/WelcomPage';
@@ -12,22 +13,23 @@ const style = {
 };
 
 const App = () => {
+  const navigate = useNavigate();
   return (
     <>
       <CssBaseline />
-      <BrowserRouter>
+      <ErrorBoundary navigate={navigate}>
         <Layout>
           <Box sx={style.box}>
             <Container maxWidth={false}>
               <Routes>
-                <Route path="/welcome" element={<WelcomPage />} />
                 <Route path="/" element={<MainPage />} />
-                {/* <Route path="*" element={<WelcomPage />} /> */}
+                <Route path="/welcome" element={<WelcomPage />} />
+                <Route path="*" element={<h1>404 not found</h1>} />
               </Routes>
             </Container>
           </Box>
         </Layout>
-      </BrowserRouter>
+      </ErrorBoundary>
     </>
   );
 };
