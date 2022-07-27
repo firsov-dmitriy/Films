@@ -1,15 +1,13 @@
 import { Card, CardMedia } from '@mui/material';
 import styled from '@emotion/styled';
-import { rootShouldForwardProp } from '@mui/material/styles/styled';
-interface CardMediaProp {
-  isShow: boolean;
-}
 
 export const StyledCard = styled(Card)({
   position: 'relative',
-  margin: 3,
+  margin: '10px 5px',
+  boxShadow: '5px -3px 15px 5px rgba(0,0,0,0.2)',
   ':hover': {
     cursor: 'pointer',
+    boxShadow: '5px -3px 15px 5px rgba(0,0,0,0.6)',
   },
 }) as typeof Card;
 export const StyledCardMedia = styled(CardMedia)(() => ({})) as typeof CardMedia;
