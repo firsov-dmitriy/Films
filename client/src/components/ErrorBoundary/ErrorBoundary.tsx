@@ -1,7 +1,8 @@
 import { Alert, Button, Grid } from '@mui/material';
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { NavigateFunction } from 'react-router-dom';
-import { StyledBox, StyledBtn, StyledGrid } from './style';
+import { StyledBox, StyledGrid } from '../../common/style/style';
+import { StyledBtn } from './style';
 
 interface Props {
   children?: ReactNode;
