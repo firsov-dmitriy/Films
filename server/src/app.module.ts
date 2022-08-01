@@ -1,6 +1,7 @@
 import { AuthModule } from './auth/auth.module';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -8,6 +9,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       'mongodb+srv://admin:admin@cluster0.4rrnu.mongodb.net/?retryWrites=true&w=majority',
     ),
     AuthModule,
+    UsersModule,
   ],
 })
 export class AppModule {}
