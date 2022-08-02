@@ -1,4 +1,4 @@
-import { Paper } from '@mui/material';
+import { Paper, FormControl } from '@mui/material';
 import styled from '@emotion/styled';
 export const StyledPaper = styled(Paper)({
   margin: '0 20px',
@@ -6,4 +6,8 @@ export const StyledPaper = styled(Paper)({
 
 export const StyledForm = styled.form({
   padding: '15px',
+});
+
+export const StyledFormControl = styled(FormControl)({
+  width: '30%',
 });

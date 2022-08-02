@@ -11,6 +11,7 @@ import {
   Typography,
 } from '@mui/material';
 import React, { FC, useState } from 'react';
+import { StyledForm, StyledFormControl } from './style';
 
 const genres: string[] = [
   'comedy',
@@ -30,7 +31,11 @@ const genres: string[] = [
   'superhero',
 ];
 
-const Filter = () => {
+interface FilterProps {
+  getValueSort: (rating: number | number[], genre: string) => void;
+}
+
+const Filter: FC<FilterProps> = ({ getValueSort }) => {
   const [selectGenre, setSelectGenre] = useState<string>();
   const [minRating, setMinRating] = useState<number | number[]>();
   const handleChange = (event: SelectChangeEvent) => {
@@ -38,41 +43,53 @@ const Filter = () => {
     setSelectGenre(event.target.value);
   };
   const handleChangeRating = (event: Event, newValue: number | number[]) => {
+    event.preventDefault();
     setMinRating(newValue);
   };
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    minRating && selectGenre && getValueSort(minRating, selectGenre);
+  };
   return (
-    <Grid display={'flex'} justifyContent={'space-around'} alignItems={'center'}>
-      <FormControl variant={'standard'} sx={{ width: '10%' }}>
-        <InputLabel id="demo-simple-select-label">Genre</InputLabel>
-        <Select
-          labelId="demo-multiple-checkbox-label"
-          id="demo-multiple-checkbox"
-          placeholder="Genre"
-          value={selectGenre}
-          onChange={handleChange}
-        >
-          {genres.map((genre, index) => (
-            <MenuItem key={index} value={genre}>
-              {genre}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+    <StyledForm onSubmit={handleSubmit}>
+      <Grid container justifyContent={'space-around'} alignItems={'center'}>
+        <StyledFormControl>
+          <InputLabel id="demo-simple-select-label">Genre</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            placeholder="Genre"
+            label="Genre"
+            value={selectGenre}
+            onChange={handleChange}
+          >
+            {genres.map((genre, index) => (
+              <MenuItem key={index} value={genre}>
+                {genre}
+              </MenuItem>
+            ))}
+          </Select>
+        </StyledFormControl>
 
-      <Box sx={{ width: '10%' }}>
-        <Typography>Rating</Typography>
-        <Slider
-          valueLabelDisplay="auto"
-          step={1}
-          marks
-          min={0}
-          max={9}
-          onChange={handleChangeRating}
-        />
-      </Box>
+        <Box sx={{ width: '20%' }}>
+          <Typography>Rating</Typography>
+          <Slider
+            valueLabelDisplay="auto"
+            value={minRating}
+            defaultValue={0}
+            step={1}
+            marks
+            min={0}
+            max={9}
+            onChange={handleChangeRating}
+          />
+        </Box>
 
-      <Button variant={'contained'}>Sort</Button>
-    </Grid>
+        <Button type="submit" variant={'contained'}>
+          Sort
+        </Button>
+      </Grid>
+    </StyledForm>
   );
 };
 
