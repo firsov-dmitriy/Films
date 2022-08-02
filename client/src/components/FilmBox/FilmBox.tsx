@@ -4,7 +4,7 @@ import ListFilms from '../ListFilms/ListFilms';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import Filter from './Filter';
-import { StyledPaper } from './style';
+import { StyledForm, StyledPaper } from './style';
 import { useGetListFilmQuery } from '../../service/filmService';
 
 const FilmBox = () => {
@@ -25,12 +25,12 @@ const FilmBox = () => {
   return (
     <StyledPaper>
       <Grid container display={'flex'} justifyContent={'center'} mt={25}>
-        <form onSubmit={handleSubmit}>
+        <StyledForm onSubmit={handleSubmit}>
           <TextField inputRef={searchRef} id="standard-basic" label="Search" variant="standard" />
           <Button variant="contained" type="submit">
             Search
           </Button>
-        </form>
+        </StyledForm>
 
         <IconButton onClick={handleClick}>
           {!isShow ? <ArrowDropDownIcon fontSize="large" /> : <ArrowDropUpIcon fontSize="large" />}

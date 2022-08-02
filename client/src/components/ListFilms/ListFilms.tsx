@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import React, { FC, memo } from 'react';
 import { useGetListFilmQuery } from '../../service/filmService';
 import FilmItem from '../FilmItem/FilmItem';
@@ -24,7 +25,13 @@ const ListFilms: FC<ListFilmsProps> = memo(({ minimum_rating, genre, limit, sear
     );
   }
   if (!data?.data.movies) {
-    return <h1>Nothing found!</h1>;
+    return (
+      <StyledGrid container height={'50vh'} alignItems={'center'}>
+        <Typography sx={{ color: 'grey' }} variant={'h2'}>
+          Nothing found!
+        </Typography>
+      </StyledGrid>
+    );
   }
 
   return (
