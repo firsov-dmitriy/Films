@@ -13,10 +13,6 @@ const FilmBox = () => {
   const { data, isLoading } = useGetListFilmQuery({ searchValue });
   const searchRef = useRef<HTMLInputElement>();
 
-  const handleChange = (eve: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    // eve.preventDefault();
-    setValue(eve.target.value);
-  };
   const handleClick = (eve: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     eve.preventDefault();
     setIsShow((prev) => !prev);

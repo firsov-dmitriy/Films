@@ -23,13 +23,13 @@ const ListFilms: FC<ListFilmsProps> = memo(({ minimum_rating, genre, limit, sear
       </StyledGrid>
     );
   }
-  console.log(searchValue, data);
+  if (!data?.data.movies) {
+    return <h1>Nothing found!</h1>;
+  }
 
   return (
     <StyledGrid container>
-      {data?.data.movies.map((film) => (
-        <FilmItem key={film.id} film={film} />
-      ))}
+      {data?.data.movies && data?.data.movies.map((film) => <FilmItem key={film.id} film={film} />)}
     </StyledGrid>
   );
 });

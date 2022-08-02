@@ -1,4 +1,5 @@
 import { useMediaQuery, useTheme } from '@mui/material';
+import React from 'react';
 import { useState, useEffect } from 'react';
 import FilmBox from '../FilmBox/FilmBox';
 import ListFilms from '../ListFilms/ListFilms';
