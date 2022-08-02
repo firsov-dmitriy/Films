@@ -1,26 +1,17 @@
 import {
   Box,
+  Button,
   FormControl,
+  Grid,
   InputLabel,
   MenuItem,
   Select,
   SelectChangeEvent,
-  OutlinedInput,
+  Slider,
+  Typography,
 } from '@mui/material';
-import React, { useState } from 'react';
-import ListItemText from '@mui/material/ListItemText';
-import Checkbox from '@mui/material/Checkbox';
+import React, { FC, useState } from 'react';
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
 const genres: string[] = [
   'comedy',
   'romance',
@@ -41,14 +32,18 @@ const genres: string[] = [
 
 const Filter = () => {
   const [selectGenre, setSelectGenre] = useState<string>();
-
+  const [minRating, setMinRating] = useState<number | number[]>();
   const handleChange = (event: SelectChangeEvent) => {
-    setSelectGenre(event.target.value as string);
+    event.preventDefault();
+    setSelectGenre(event.target.value);
+  };
+  const handleChangeRating = (event: Event, newValue: number | number[]) => {
+    setMinRating(newValue);
   };
   return (
-    <Box p={5} m={2}>
-      <FormControl variant={'standard'}>
-        <InputLabel id="demo-simple-select-label">Genre </InputLabel>
+    <Grid display={'flex'} justifyContent={'space-around'} alignItems={'center'}>
+      <FormControl variant={'standard'} sx={{ width: '10%' }}>
+        <InputLabel id="demo-simple-select-label">Genre</InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
@@ -63,7 +58,21 @@ const Filter = () => {
           ))}
         </Select>
       </FormControl>
-    </Box>
+
+      <Box sx={{ width: '10%' }}>
+        <Typography>Rating</Typography>
+        <Slider
+          valueLabelDisplay="auto"
+          step={1}
+          marks
+          min={0}
+          max={9}
+          onChange={handleChangeRating}
+        />
+      </Box>
+
+      <Button variant={'contained'}>Sort</Button>
+    </Grid>
   );
 };
 

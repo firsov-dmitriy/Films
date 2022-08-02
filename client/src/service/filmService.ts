@@ -8,9 +8,9 @@ export const filmApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
     getListFilm: builder.query<FilmResponse, FilmQuery>({
-      query: ({ page = 1, minimum_rating = 0, genre = '', limit = 20 }) => ({
+      query: ({ page = 1, minimum_rating = 0, genre = '', limit = 1, searchValue }) => ({
         url: endpointsFilm.List,
-        params: { page, minimum_rating, genre, limit },
+        params: { page, minimum_rating, genre, limit, query_term: searchValue },
       }),
       providesTags: ['Films'],
     }),

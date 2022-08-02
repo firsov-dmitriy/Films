@@ -1,38 +1,47 @@
-import { Grid, IconButton, Paper, TextField } from '@mui/material';
-import React, { useState } from 'react';
+import { Button, FormControl, Grid, IconButton, Paper, TextField } from '@mui/material';
+import React, { useRef, useState } from 'react';
 import ListFilms from '../ListFilms/ListFilms';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import Filter from './Filter';
 import { StyledPaper } from './style';
+import { useGetListFilmQuery } from '../../service/filmService';
 
 const FilmBox = () => {
   const [searchValue, setValue] = useState<string>();
   const [isShow, setIsShow] = useState(false);
+  const { data, isLoading } = useGetListFilmQuery({ searchValue });
+  const searchRef = useRef<HTMLInputElement>();
+
   const handleChange = (eve: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    eve.preventDefault();
+    // eve.preventDefault();
     setValue(eve.target.value);
   };
   const handleClick = (eve: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     eve.preventDefault();
     setIsShow((prev) => !prev);
   };
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setValue(searchRef.current?.value);
+  };
+
   return (
     <StyledPaper>
       <Grid container display={'flex'} justifyContent={'center'} mt={25}>
-        <TextField
-          id="standard-basic"
-          value={searchValue}
-          label="Search"
-          variant="standard"
-          onChange={handleChange}
-        />
+        <form onSubmit={handleSubmit}>
+          <TextField inputRef={searchRef} id="standard-basic" label="Search" variant="standard" />
+          <Button variant="contained" type="submit">
+            Search
+          </Button>
+        </form>
+
         <IconButton onClick={handleClick}>
           {!isShow ? <ArrowDropDownIcon fontSize="large" /> : <ArrowDropUpIcon fontSize="large" />}
         </IconButton>
       </Grid>
       {isShow && <Filter />}
-      <ListFilms limit={50} />
+      <ListFilms limit={50} searchValue={searchValue} />
     </StyledPaper>
   );
 };

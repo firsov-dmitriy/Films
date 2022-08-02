@@ -7,10 +7,11 @@ interface ListFilmsProps {
   minimum_rating?: number;
   genre?: string;
   limit?: number;
+  searchValue?: string;
 }
 
-const ListFilms: FC<ListFilmsProps> = memo(({ minimum_rating, genre, limit }) => {
-  const { data, isLoading } = useGetListFilmQuery({ minimum_rating, genre, limit });
+const ListFilms: FC<ListFilmsProps> = memo(({ minimum_rating, genre, limit, searchValue }) => {
+  const { data, isLoading } = useGetListFilmQuery({ minimum_rating, genre, limit, searchValue });
 
   if (isLoading) {
     const arrSkeleton = Array(limit).fill(0);
@@ -22,6 +23,8 @@ const ListFilms: FC<ListFilmsProps> = memo(({ minimum_rating, genre, limit }) =>
       </StyledGrid>
     );
   }
+  console.log(searchValue, data);
+
   return (
     <StyledGrid container>
       {data?.data.movies.map((film) => (

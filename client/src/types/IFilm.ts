@@ -31,4 +31,5 @@ export interface FilmQuery {
   minimum_rating?: number;
   genre?: string;
   limit?: number;
+  searchValue?: string;
 }
