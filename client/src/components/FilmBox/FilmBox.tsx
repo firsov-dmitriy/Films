@@ -4,6 +4,7 @@ import ListFilms from '../ListFilms/ListFilms';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import Filter from './Filter';
+import { StyledPaper } from './style';
 
 const FilmBox = () => {
   const [searchValue, setValue] = useState<string>();
@@ -17,7 +18,7 @@ const FilmBox = () => {
     setIsShow((prev) => !prev);
   };
   return (
-    <Paper>
+    <StyledPaper>
       <Grid container display={'flex'} justifyContent={'center'} mt={25}>
         <TextField
           id="standard-basic"
@@ -31,8 +32,8 @@ const FilmBox = () => {
         </IconButton>
       </Grid>
       {isShow && <Filter />}
-      <ListFilms limit={50} genre={'drama sci-fi'} />
-    </Paper>
+      <ListFilms limit={50} />
+    </StyledPaper>
   );
 };
 

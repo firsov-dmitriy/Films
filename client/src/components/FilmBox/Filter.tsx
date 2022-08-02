@@ -40,35 +40,25 @@ const genres: string[] = [
 ];
 
 const Filter = () => {
-  const [selectGenre, setSelectGenre] = useState<string[]>([]);
+  const [selectGenre, setSelectGenre] = useState<string>();
 
-  const handleChange = (event: SelectChangeEvent<typeof selectGenre>) => {
-    const {
-      target: { value },
-    } = event;
-    setSelectGenre(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value
-    );
+  const handleChange = (event: SelectChangeEvent) => {
+    setSelectGenre(event.target.value as string);
   };
   return (
-    <Box p={5}>
-      <FormControl fullWidth>
+    <Box p={5} m={2}>
+      <FormControl variant={'standard'}>
         <InputLabel id="demo-simple-select-label">Genre </InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
-          multiple
+          placeholder="Genre"
           value={selectGenre}
           onChange={handleChange}
-          input={<OutlinedInput label="Tag" />}
-          renderValue={(selected) => selected.join(', ')}
-          MenuProps={MenuProps}
         >
           {genres.map((genre, index) => (
             <MenuItem key={index} value={genre}>
-              <Checkbox checked={selectGenre.indexOf(genre) > -1} />
-              <ListItemText primary={genre} />
+              {genre}
             </MenuItem>
           ))}
         </Select>
