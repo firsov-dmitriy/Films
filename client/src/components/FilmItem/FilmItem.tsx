@@ -17,7 +17,7 @@ const FilmItem: FC<FilmItemProps> = ({ film }) => {
     >
       <StyledCardMedia
         component="img"
-        height={300}
+        height={250}
         sx={{ opacity: isShow ? 0.3 : 1 }}
         image={film.large_cover_image}
         alt={film.title}

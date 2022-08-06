@@ -1,4 +1,5 @@
 import { Typography, Zoom } from '@mui/material';
+import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StyledBox, StyledGrid, StyledTitle } from './style';

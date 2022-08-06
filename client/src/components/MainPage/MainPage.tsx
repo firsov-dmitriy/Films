@@ -1,4 +1,4 @@
-import { useMediaQuery, useTheme } from '@mui/material';
+import { Theme, useMediaQuery, useTheme } from '@mui/material';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import FilmBox from '../FilmBox/FilmBox';
@@ -11,17 +11,14 @@ const genres: string[] = [
   'romance',
   'drama',
   'animation',
-  'comedy-romance',
   'sci-fi',
   'action',
   'mystery',
   'adventure',
-  'action-comedy',
   'horror',
   'thriller',
   'crime',
   'fantasy',
-  'superhero',
 ];
 
 const MainPage = () => {

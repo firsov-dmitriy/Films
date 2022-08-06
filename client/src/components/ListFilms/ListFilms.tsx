@@ -1,5 +1,6 @@
 import { Typography } from '@mui/material';
 import React, { FC, memo } from 'react';
+import { BgPaper } from '../../common/style/style';
 import { useGetListFilmQuery } from '../../service/filmService';
 import FilmItem from '../FilmItem/FilmItem';
 import { StyledGrid, StyledSkeleton } from './style';
@@ -35,9 +36,12 @@ const ListFilms: FC<ListFilmsProps> = memo(({ minimum_rating, genre, limit, sear
   }
 
   return (
-    <StyledGrid container>
-      {data?.data.movies && data?.data.movies.map((film) => <FilmItem key={film.id} film={film} />)}
-    </StyledGrid>
+    <BgPaper>
+      <StyledGrid container>
+        {data?.data.movies &&
+          data?.data.movies.map((film) => <FilmItem key={film.id} film={film} />)}
+      </StyledGrid>
+    </BgPaper>
   );
 });
 

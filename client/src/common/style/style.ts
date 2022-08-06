@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Paper } from '@mui/material';
 
 export const StyledGrid = styled(Grid)({
   height: '100vh',
@@ -17,3 +17,5 @@ export const StyledBox = styled(Box)({
   backgroundColor: 'white',
   boxShadow: '5px -3px 15px 5px rgba(0,0,0,0.48)',
 });
+
+export const BgPaper = styled(Paper)({ backgroundColor: '#f1e8e6', margin: 20 });
