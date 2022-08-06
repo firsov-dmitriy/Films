@@ -31,7 +31,7 @@ class ErrorBoundary extends Component<Props, State> {
         <StyledGrid container>
           <StyledBox>
             <Alert severity="error">Sorry.. there was an error</Alert>
-            <StyledBtn color="inherit" variant="outlined" onClick={() => this.props.navigate(-1)}>
+            <StyledBtn color="inherit" variant="outlined" onClick={() => this.props.navigate('/')}>
               Go Back
             </StyledBtn>
           </StyledBox>

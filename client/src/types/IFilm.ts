@@ -4,10 +4,16 @@ interface FilmTorrent {
   quality: string;
   hash: string;
 }
-interface FilmData {
+interface FilmsData {
   limit: string;
   movie_count: string;
   movies: IFilm[];
+  page_number: number;
+}
+interface FilmData {
+  limit: string;
+  movie_count: string;
+  movie: IFilm;
   page_number: number;
 }
 export interface IFilm {
@@ -17,13 +23,13 @@ export interface IFilm {
   description_full: string;
   language: string;
   large_cover_image: string;
+  medium_cover_image: string;
   title: string;
   torrents: FilmTorrent[];
 }
-export interface FilmResponse {
-  data: FilmData;
+export interface FilmsResponse {
+  data: FilmsData;
   status: string;
-
   status_message: string;
 }
 export interface FilmQuery {
@@ -32,4 +38,10 @@ export interface FilmQuery {
   genre?: string;
   limit?: number;
   searchValue?: string;
+}
+
+export interface FilmResponse {
+  data: FilmData;
+  status: string;
+  status_message: string;
 }
