@@ -1,13 +1,22 @@
-import { CardContent, Typography } from '@mui/material';
+import { Typography, CardMedia } from '@mui/material';
 import React, { FC, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { IFilm } from '../../types/IFilm';
-import { StyledCard, StyledCardMedia } from './style';
+import { StyledCard, StyledCardContent } from './style';
 
 interface FilmItemProps {
   film: IFilm;
 }
 
 const FilmItem: FC<FilmItemProps> = ({ film }) => {
+  const navigate = useNavigate();
+  const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    try {
+      navigate('film/' + event.target.parentElement.id);
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
   const [isShow, setIsShow] = useState(false);
   return (
     <StyledCard
@@ -15,7 +24,7 @@ const FilmItem: FC<FilmItemProps> = ({ film }) => {
       onMouseMove={() => setIsShow(true)}
       onMouseLeave={() => setIsShow(false)}
     >
-      <StyledCardMedia
+      <CardMedia
         component="img"
         height={250}
         sx={{ opacity: isShow ? 0.3 : 1 }}
@@ -23,14 +32,11 @@ const FilmItem: FC<FilmItemProps> = ({ film }) => {
         alt={film.title}
       />
       {isShow && (
-        <CardContent sx={{ position: 'absolute', top: 0, left: 0 }}>
-          <Typography gutterBottom variant="h5" component="div">
+        <StyledCardContent id={film.id.toString()}>
+          <Typography gutterBottom variant="h5" component="div" onClick={handleClick}>
             {film.title}
           </Typography>
-          {/* <Typography variant="body2" color="text.secondary">
-            {film.description_full}
-          </Typography> */}
-        </CardContent>
+        </StyledCardContent>
       )}
     </StyledCard>
   );

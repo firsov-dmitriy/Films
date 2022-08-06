@@ -1,7 +1,6 @@
 import { Grid } from '@mui/material';
 import React, { FC, MouseEventHandler, useState } from 'react';
-import { BgPaper } from '../../common/style/style';
-import { StyledPaper } from '../FilmBox/style';
+import { BgPaper } from '../../styles/style/style';
 import ListFilms from '../ListFilms/ListFilms';
 import { StyledBtn } from './style';
 
@@ -25,8 +24,9 @@ const GenreList: FC<GenreListProps> = ({ genres }) => {
             </StyledBtn>
           ))}
         </Grid>
+
+        <ListFilms genre={genre} limit={20} minimum_rating={8} />
       </BgPaper>
-      <ListFilms genre={genre} limit={20} minimum_rating={8} />
     </>
   );
 };

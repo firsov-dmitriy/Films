@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import React from 'react';
-import { StyledBox, StyledGrid } from '../../common/style/style';
+import { StyledGrid } from '../../styles/style/style';
 
 const NotFound = () => {
   return (
