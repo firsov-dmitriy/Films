@@ -3,7 +3,6 @@ import { Module } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
 import { User, UserSchema } from './users.schema';
-import { MESSAGES } from '@nestjs/core/constants';
 
 @Module({
   controllers: [UsersController],
@@ -14,11 +13,14 @@ import { MESSAGES } from '@nestjs/core/constants';
         name: User.name,
         useFactory() {
           const schema = UserSchema;
-          schema.plugin(require('mongoose-unique-validator'));
+          schema.plugin(require('mongoose-unique-validator'), {
+            message: 'Error',
+          });
           return schema;
         },
       },
     ]),
   ],
+  exports: [UsersService],
 })
 export class UsersModule {}
