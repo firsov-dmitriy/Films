@@ -4,6 +4,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import Layout from './components/Layout/Layout';
 import MainPage from './components/MainPage/MainPage';
+import NotFound from './components/NotFound/NotFound';
 import WelcomPage from './components/WelcomePage/WelcomPage';
 
 const style = {
@@ -20,13 +21,11 @@ const App = () => {
       <ErrorBoundary navigate={navigate}>
         <Layout>
           <Box sx={style.box}>
-            <Container maxWidth={false}>
-              <Routes>
-                <Route path="/" element={<MainPage />} />
-                <Route path="/welcome" element={<WelcomPage />} />
-                <Route path="*" element={<h1>404 not found</h1>} />
-              </Routes>
-            </Container>
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/welcome" element={<WelcomPage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
           </Box>
         </Layout>
       </ErrorBoundary>
