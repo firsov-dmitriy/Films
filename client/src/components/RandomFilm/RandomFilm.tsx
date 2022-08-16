@@ -1,7 +1,7 @@
 import React from 'react';
 import { useGetListFilmQuery, useGetOneFilmQuery } from '../../service/filmService';
 import { FilmResponse } from '../../types/IFilm';
-import { endpointsFilm } from '../../utils/contsct';
+import { endpointsFilm } from '../../utils/contcts';
 
 const getRandomId = (data: FilmResponse | undefined) => {
   const maxId = data ? data?.data.movie_count : '1';

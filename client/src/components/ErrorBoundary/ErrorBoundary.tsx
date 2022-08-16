@@ -1,8 +1,8 @@
-import { Alert, Button, Grid } from '@mui/material';
+import { Alert } from '@mui/material';
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { NavigateFunction } from 'react-router-dom';
-import { StyledBox, StyledGrid } from '../../common/style/style';
-import { StyledBtn } from './style';
+import { StyledGrid, StyledBox } from '../../styles/style/style';
+import { StyledBtn } from '../GenreList/style';
 
 interface Props {
   children?: ReactNode;
@@ -31,7 +31,7 @@ class ErrorBoundary extends Component<Props, State> {
         <StyledGrid container>
           <StyledBox>
             <Alert severity="error">Sorry.. there was an error</Alert>
-            <StyledBtn color="inherit" variant="outlined" onClick={() => this.props.navigate(-1)}>
+            <StyledBtn color="inherit" variant="outlined" onClick={() => this.props.navigate('/')}>
               Go Back
             </StyledBtn>
           </StyledBox>

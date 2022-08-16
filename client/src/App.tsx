@@ -1,11 +1,12 @@
-import { Box, Container, CssBaseline } from '@mui/material';
+import { Box, CssBaseline } from '@mui/material';
 import React from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import FilmPage from './page/FilmPage/FilmPage';
 import Layout from './components/Layout/Layout';
-import MainPage from './components/MainPage/MainPage';
+import MainPage from './page/MainPage/MainPage';
 import NotFound from './components/NotFound/NotFound';
-import WelcomPage from './components/WelcomePage/WelcomPage';
+import WelcomPage from './page/WelcomePage/WelcomPage';
 
 const style = {
   box: {
@@ -25,6 +26,7 @@ const App = () => {
               <Route path="/" element={<MainPage />} />
               <Route path="/welcome" element={<WelcomPage />} />
               <Route path="*" element={<NotFound />} />
+              <Route path="/film/:id" element={<FilmPage />} />
             </Routes>
           </Box>
         </Layout>

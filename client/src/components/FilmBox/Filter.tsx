@@ -1,26 +1,18 @@
 import {
   Box,
+  Button,
   FormControl,
+  Grid,
   InputLabel,
   MenuItem,
   Select,
   SelectChangeEvent,
-  OutlinedInput,
+  Slider,
+  Typography,
 } from '@mui/material';
-import React, { useState } from 'react';
-import ListItemText from '@mui/material/ListItemText';
-import Checkbox from '@mui/material/Checkbox';
+import React, { FC, useState } from 'react';
+import { StyledForm, StyledFormControl } from './style';
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
 const genres: string[] = [
   'comedy',
   'romance',
@@ -39,41 +31,65 @@ const genres: string[] = [
   'superhero',
 ];
 
-const Filter = () => {
-  const [selectGenre, setSelectGenre] = useState<string[]>([]);
+interface FilterProps {
+  getValueSort: (rating: number | number[], genre: string) => void;
+}
 
-  const handleChange = (event: SelectChangeEvent<typeof selectGenre>) => {
-    const {
-      target: { value },
-    } = event;
-    setSelectGenre(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value
-    );
+const Filter: FC<FilterProps> = ({ getValueSort }) => {
+  const [selectGenre, setSelectGenre] = useState<string>();
+  const [minRating, setMinRating] = useState<number | number[]>();
+  const handleChange = (event: SelectChangeEvent) => {
+    event.preventDefault();
+    setSelectGenre(event.target.value);
+  };
+  const handleChangeRating = (event: Event, newValue: number | number[]) => {
+    event.preventDefault();
+    setMinRating(newValue);
+  };
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    minRating && selectGenre && getValueSort(minRating, selectGenre);
   };
   return (
-    <Box p={5}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Genre </InputLabel>
-        <Select
-          labelId="demo-multiple-checkbox-label"
-          id="demo-multiple-checkbox"
-          multiple
-          value={selectGenre}
-          onChange={handleChange}
-          input={<OutlinedInput label="Tag" />}
-          renderValue={(selected) => selected.join(', ')}
-          MenuProps={MenuProps}
-        >
-          {genres.map((genre, index) => (
-            <MenuItem key={index} value={genre}>
-              <Checkbox checked={selectGenre.indexOf(genre) > -1} />
-              <ListItemText primary={genre} />
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </Box>
+    <StyledForm onSubmit={handleSubmit}>
+      <Grid container justifyContent={'space-around'} alignItems={'center'}>
+        <StyledFormControl>
+          <InputLabel id="demo-simple-select-label">Genre</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            placeholder="Genre"
+            label="Genre"
+            value={selectGenre}
+            onChange={handleChange}
+          >
+            {genres.map((genre, index) => (
+              <MenuItem key={index} value={genre}>
+                {genre}
+              </MenuItem>
+            ))}
+          </Select>
+        </StyledFormControl>
+
+        <Box sx={{ width: '20%' }}>
+          <Typography>Rating</Typography>
+          <Slider
+            valueLabelDisplay="auto"
+            value={minRating}
+            defaultValue={0}
+            step={1}
+            marks
+            min={0}
+            max={9}
+            onChange={handleChangeRating}
+          />
+        </Box>
+
+        <Button type="submit" variant={'contained'}>
+          Sort
+        </Button>
+      </Grid>
+    </StyledForm>
   );
 };
 
