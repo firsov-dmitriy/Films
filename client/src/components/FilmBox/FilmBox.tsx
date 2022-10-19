@@ -1,14 +1,15 @@
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import { Box, Button, Grid, IconButton, TextField } from '@mui/material';
 import React, { useRef, useState } from 'react';
 import ListFilms from '../ListFilms/ListFilms';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import Filter from './Filter';
 import { StyledForm, StyledPaper } from './style';
 
 const FilmBox = () => {
   const [searchValue, setValue] = useState<string>();
   const [isShow, setIsShow] = useState(false);
+
   const searchRef = useRef<HTMLInputElement>();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -19,9 +20,7 @@ const FilmBox = () => {
     event.preventDefault();
     setValue(searchRef.current?.value);
   };
-  const getSortValue = (rating: number | number[], genre: string) => {
-    console.log(rating, genre);
-  };
+  const getSortValue = (rating: number | number[], genre: string) => {};
 
   return (
     <StyledPaper>

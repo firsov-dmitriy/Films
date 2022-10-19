@@ -1,25 +1,9 @@
-import { Theme, useMediaQuery, useTheme } from '@mui/material';
-import React from 'react';
-import { useState, useEffect } from 'react';
-import FilmBox from '../../components/FilmBox/FilmBox';
+import { useMediaQuery, useTheme } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import GenreList from '../../components/GenreList/GenreList';
 import ListFilms from '../../components/ListFilms/ListFilms';
 import RandomFilm from '../../components/RandomFilm/RandomFilm';
-
-const genres: string[] = [
-  'comedy',
-  'romance',
-  'drama',
-  'animation',
-  'sci-fi',
-  'action',
-  'mystery',
-  'adventure',
-  'horror',
-  'thriller',
-  'crime',
-  'fantasy',
-];
+import { genres } from '../../constance/ganre';
 
 const MainPage = () => {
   const theme = useTheme();

@@ -1,8 +1,9 @@
-import { Grid, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import React from 'react';
 import { Params, useParams } from 'react-router';
 import { useGetOneFilmQuery } from '../../service/filmService';
 import { BgPaper } from '../../styles/style/style';
+import { BoxFilmPage, ContainerFilmPage, ImageFilmPage } from './style';
 
 interface ParamsProps extends Params {
   id: string;
@@ -16,11 +17,14 @@ const FilmPage = () => {
 
   return (
     <BgPaper>
-      <Grid container flexWrap={'nowrap'}>
-        <img src={movie?.medium_cover_image} alt={movie?.title} />
-        <Typography variant="subtitle1">{data?.data.movie.description_full}</Typography>
-      </Grid>
-      {movie?.language}
+      <ContainerFilmPage container flexWrap={'nowrap'}>
+        <ImageFilmPage src={movie?.medium_cover_image} alt={movie?.title} />
+        <BoxFilmPage>
+          <Typography variant="subtitle1">
+            Discription : {data?.data.movie.description_full}
+          </Typography>
+        </BoxFilmPage>
+      </ContainerFilmPage>
     </BgPaper>
   );
 };
