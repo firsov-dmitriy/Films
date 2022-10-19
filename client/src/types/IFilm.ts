@@ -26,6 +26,8 @@ export interface IFilm {
   medium_cover_image: string;
   title: string;
   torrents: FilmTorrent[];
+  rating: number;
+  yt_trailer_code: string;
 }
 export interface FilmsResponse {
   data: FilmsData;
