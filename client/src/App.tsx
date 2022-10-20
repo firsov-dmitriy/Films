@@ -1,11 +1,11 @@
 import { Box, CssBaseline } from '@mui/material';
 import React from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
-import FilmPage from './page/FilmPage/FilmPage';
 import Layout from './components/Layout/Layout';
-import MainPage from './page/MainPage/MainPage';
 import NotFound from './components/NotFound/NotFound';
+import FilmPage from './page/FilmPage/FilmPage';
+import MainPage from './page/MainPage/MainPage';
 import WelcomPage from './page/WelcomePage/WelcomPage';
 
 const style = {

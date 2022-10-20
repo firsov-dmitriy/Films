@@ -2,10 +2,11 @@ import styled from '@emotion/styled';
 import { Box, Grid, Stack } from '@mui/material';
 
 export const ContainerFilmPage = styled(Grid)({
-  height: 'calc(100vh )',
+  minHeight: 'calc(100vh - 64px)',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  padding: 10,
 });
 
 export const ImageFilmPage = styled.img({

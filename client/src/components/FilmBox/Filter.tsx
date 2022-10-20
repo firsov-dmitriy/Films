@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  FormControl,
   Grid,
   InputLabel,
   MenuItem,
@@ -11,25 +10,8 @@ import {
   Typography,
 } from '@mui/material';
 import React, { FC, useState } from 'react';
+import { genres } from '../../constance/genre';
 import { StyledForm, StyledFormControl } from './style';
-
-const genres: string[] = [
-  'comedy',
-  'romance',
-  'drama',
-  'animation',
-  'comedy-romance',
-  'sci-fi',
-  'action',
-  'mystery',
-  'adventure',
-  'action-comedy',
-  'horror',
-  'thriller',
-  'crime',
-  'fantasy',
-  'superhero',
-];
 
 interface FilterProps {
   getValueSort: (rating: number | number[], genre: string) => void;
